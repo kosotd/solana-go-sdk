@@ -98,6 +98,7 @@ func (c *RpcClient) Call(ctx context.Context, params ...any) ([]byte, error) {
 		return nil, fmt.Errorf("failed to do http.NewRequestWithContext, err: %v", err)
 	}
 	req.Header.Add("Content-Type", "application/json")
+	req.Header.Add("Accept-Encoding", "gzip")
 
 	// do request
 	res, err := c.httpClient.Do(req)
